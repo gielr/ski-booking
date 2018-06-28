@@ -7,6 +7,8 @@ import com.github.project.service.AnotherServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,11 +35,14 @@ public class AnotherServiceServiceImpl implements AnotherServiceService{
     @Override
     public AnotherService createAnotherService(AnotherServiceDTO anotherService) {
         AnotherService another = new AnotherService();
-        another.setRentDate(anotherService.getRentDate());
+        another.setRentDate(Timestamp.valueOf(LocalDateTime.now()));
         another.setRentFrom(anotherService.getRentFrom());
         another.setRentTo(anotherService.getRentTo());
-        another.setServicePrice(anotherService.getServicePrice());
-        another.setServicePaid(anotherService.isServicePaid());
+        another.setServicePrice(anotherService.getServiceType().getValue());
+        another.setServicePaid(false);
+        another.setServiceType(anotherService.getServiceType());
+        another.setClient(anotherService.getClient());
+
 
         AnotherService save = anotherServiceRepository.save(another);
 
