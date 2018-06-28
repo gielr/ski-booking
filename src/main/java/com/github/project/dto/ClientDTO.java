@@ -1,5 +1,7 @@
 package com.github.project.dto;
 
+import com.github.project.model.Client;
+
 public class ClientDTO {
     private String name;
     private String surname;
@@ -7,9 +9,9 @@ public class ClientDTO {
     public ClientDTO() {
     }
 
-    public ClientDTO(String name, String surname) {
-        this.name = name;
-        this.surname = surname;
+    public ClientDTO(Client client) {
+        this.name = client.getName();
+        this.surname = client.getSurname();
     }
 
     public String getName() {

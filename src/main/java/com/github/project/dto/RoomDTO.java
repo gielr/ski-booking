@@ -1,5 +1,7 @@
 package com.github.project.dto;
 
+import com.github.project.model.Room;
+
 import java.math.BigDecimal;
 
 public class RoomDTO {
@@ -9,9 +11,9 @@ public class RoomDTO {
     public RoomDTO() {
     }
 
-    public RoomDTO(Integer roomSize, BigDecimal price) {
-        this.roomSize = roomSize;
-        this.price = price;
+    public RoomDTO(Room room) {
+        this.roomSize = room.getRoomSize();
+        this.price = room.getPrice();
     }
 
     public Integer getRoomSize() {
