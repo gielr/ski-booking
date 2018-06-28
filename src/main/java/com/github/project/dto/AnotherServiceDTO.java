@@ -1,5 +1,6 @@
 package com.github.project.dto;
 
+import com.github.project.model.AnotherService;
 import com.github.project.model.Client;
 import com.github.project.model.ServiceType;
 
@@ -24,11 +25,11 @@ public class AnotherServiceDTO {
     public AnotherServiceDTO() {
     }
 
-    public AnotherServiceDTO(Timestamp rentFrom, Timestamp rentTo, Client client, ServiceType serviceType) {
-        this.rentFrom = rentFrom;
-        this.rentTo = rentTo;
-        this.client = client;
-        this.serviceType = serviceType;
+    public AnotherServiceDTO(AnotherService anotherService) {
+        this.rentFrom = anotherService.getRentFrom();
+        this.rentTo = anotherService.getRentTo();
+        this.client = anotherService.getClient();
+        this.serviceType = anotherService.getServiceType();
     }
 
     public Timestamp getRentFrom() {

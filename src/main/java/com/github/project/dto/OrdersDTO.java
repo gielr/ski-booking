@@ -1,6 +1,7 @@
 package com.github.project.dto;
 
 import com.github.project.model.Client;
+import com.github.project.model.Orders;
 import com.github.project.model.Room;
 
 import java.awt.print.Book;
@@ -18,11 +19,11 @@ public class OrdersDTO {
     public OrdersDTO() {
     }
 
-    public OrdersDTO(Timestamp bookFrom, Timestamp bookTo, Room room, Client client) {
-        this.bookFrom = bookFrom;
-        this.bookTo = bookTo;
-        this.room = room;
-        this.client = client;
+    public OrdersDTO(Orders orders) {
+        this.bookFrom = orders.getBookFrom();
+        this.bookTo = orders.getBookTo();
+        this.room = orders.getRoom();
+        this.client = orders.getClient();
     }
 
     public Timestamp getBookFrom() {
