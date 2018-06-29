@@ -3,6 +3,9 @@ package com.github.project.controller;
 import com.github.project.dto.OrderDTO;
 import com.github.project.model.Order;
 import com.github.project.service.OrderService;
+import com.github.project.service.implementation.OrderServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +15,6 @@ import java.util.Set;
 @RestController
 @RequestMapping("/orders")
 public class OrdersController {
-
     private OrderService orderService;
 
     @Autowired
@@ -27,8 +29,8 @@ public class OrdersController {
     }
 
     @PostMapping
-    public OrderDTO create(@RequestBody OrderDTO orderDTO) {
-        return orderDTO;
+    public Order createOrder(@RequestBody OrderDTO orderDTO) {
+        return orderService.createOrder(orderDTO);
     }
 
 
@@ -37,7 +39,6 @@ public class OrdersController {
         orderService.deleteOrder(id);
     }
 
-
     @GetMapping
     public Set<Order> findAll() {
 
@@ -45,5 +46,4 @@ public class OrdersController {
 
         return new HashSet<>(all);
     }
-
 }

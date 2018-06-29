@@ -6,16 +6,19 @@ import com.github.project.repository.ClientRepository;
 import com.github.project.repository.OrderRepository;
 import com.github.project.repository.RoomRepository;
 import com.github.project.service.OrderService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 @Service
 public class OrderServiceImpl implements OrderService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     private OrderRepository orderRepository;
     private RoomRepository roomRepository;
@@ -41,14 +44,15 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order createOrder(OrderDTO orders) {
         Order order = new Order();
-        order.setBookDate(Timestamp.valueOf(LocalDateTime.now()));
-        order.setBookFrom(Timestamp.valueOf(orders.getBookFrom()));
-        order.setBookTo(Timestamp.valueOf(orders.getBookTo()));
+        order.setBookDate(LocalDateTime.now());
+        order.setBookFrom(orders.getBookFrom());
+        order.setBookTo(orders.getBookTo());
         order.setBookPaid(false);
         order.setClient(clientRepository.findOne(orders.getClientId()));
         order.setRoom(roomRepository.findOne(orders.getRoomId()));
         order.setBookPrice(roomRepository.getOne(orders.getRoomId()).getPrice());
 
+        LOG.info("zapisuje");
         return orderRepository.save(order);
     }
 

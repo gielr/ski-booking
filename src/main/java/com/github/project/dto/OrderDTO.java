@@ -1,12 +1,15 @@
 package com.github.project.dto;
 
 import com.github.project.model.Order;
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 import java.time.LocalDateTime;
 
 public class OrderDTO {
-
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime bookFrom;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime bookTo;
 
     private Long roomId;
@@ -16,8 +19,8 @@ public class OrderDTO {
     }
 
     public OrderDTO(Order order) {
-        this.bookFrom = order.getBookFrom().toLocalDateTime();
-        this.bookTo = order.getBookTo().toLocalDateTime();
+        this.bookFrom = order.getBookFrom();
+        this.bookTo = order.getBookTo();
         this.roomId = order.getRoom().getId();
         this.clientId = order.getClient().getId();
     }

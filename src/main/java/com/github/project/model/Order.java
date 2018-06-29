@@ -2,7 +2,6 @@ package com.github.project.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Entity(name = "Orders")
@@ -17,9 +16,9 @@ public class Order {
     @OneToOne
     private Room room;
 
-    private Timestamp bookDate;
-    private Timestamp bookFrom;
-    private Timestamp bookTo;
+    private LocalDateTime bookDate;
+    private LocalDateTime bookFrom;
+    private LocalDateTime bookTo;
 
     private boolean bookPaid;
 
@@ -28,10 +27,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(Client client, Room room, Timestamp bookDate, Timestamp bookFrom, Timestamp bookTo, boolean bookPaid, BigDecimal bookPrice) {
+    public Order(Client client, Room room, LocalDateTime bookFrom, LocalDateTime bookTo, boolean bookPaid, BigDecimal bookPrice) {
         this.client = client;
         this.room = room;
-        this.bookDate = Timestamp.valueOf(LocalDateTime.now());
+        this.bookDate = LocalDateTime.now();
         this.bookFrom = bookFrom;
         this.bookTo = bookTo;
         this.bookPaid = bookPaid;
@@ -62,27 +61,27 @@ public class Order {
         this.room = room;
     }
 
-    public Timestamp getBookDate() {
+    public LocalDateTime getBookDate() {
         return bookDate;
     }
 
-    public void setBookDate(Timestamp bookDate) {
+    public void setBookDate(LocalDateTime bookDate) {
         this.bookDate = bookDate;
     }
 
-    public Timestamp getBookFrom() {
+    public LocalDateTime getBookFrom() {
         return bookFrom;
     }
 
-    public void setBookFrom(Timestamp bookFrom) {
+    public void setBookFrom(LocalDateTime bookFrom) {
         this.bookFrom = bookFrom;
     }
 
-    public Timestamp getBookTo() {
+    public LocalDateTime getBookTo() {
         return bookTo;
     }
 
-    public void setBookTo(Timestamp bookTo) {
+    public void setBookTo(LocalDateTime bookTo) {
         this.bookTo = bookTo;
     }
 
