@@ -20,9 +20,6 @@ import java.util.Set;
 
 @Service
 public class OrderServiceImpl implements OrderService {
-
-//    private static final Logger LOG = LoggerFactory.getLogger(OrderServiceImpl.class);
-
     private OrderRepository orderRepository;
     private RoomRepository roomRepository;
     private ClientRepository clientRepository;
@@ -50,7 +47,6 @@ public class OrderServiceImpl implements OrderService {
         validateCreation(orders.getBookFrom(), orders.getBookTo(),orders.getClientId(),orders.getRoomId());
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        //LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
 
         Order order = new Order();
         order.setBookDate(LocalDateTime.now());
@@ -61,13 +57,14 @@ public class OrderServiceImpl implements OrderService {
         order.setRoom(roomRepository.findOne(orders.getRoomId()));
         order.setBookPrice(roomRepository.getOne(orders.getRoomId()).getPrice());
 
-//        LOG.info("zapisuje");
         return orderRepository.save(order);
     }
 
     @Override
     public void deleteOrder(Long id) {
-        deleteOrder(id);
+        Order order = orderRepository.findOne(id);
+        validateFindById(order);
+        orderRepository.delete(id);
     }
 
     private void validateCreation(String bookFrom, String bookTo, Long clientId, Long roomId) {

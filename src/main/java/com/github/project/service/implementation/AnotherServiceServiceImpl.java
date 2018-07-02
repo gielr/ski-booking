@@ -56,15 +56,14 @@ public class AnotherServiceServiceImpl implements AnotherServiceService{
         another.setServiceType(anotherService.getServiceType());
         another.setClient(clientRepository.findOne(anotherService.getClientId()));
 
-
-        AnotherService save = anotherServiceRepository.save(another);
-
-        return save;
+        return anotherServiceRepository.save(another);
     }
 
     @Override
     public void deleteAnotherService(Long id) {
-        deleteAnotherService(id);
+        AnotherService anotherService = anotherServiceRepository.getOne(id);
+        validateFindById(anotherService);
+        anotherServiceRepository.delete(id);
     }
 
     private void validateCreation(String rentFrom, String rentTo, Long id) {

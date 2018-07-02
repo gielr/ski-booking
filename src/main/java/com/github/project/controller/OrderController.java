@@ -41,6 +41,6 @@ public class OrderController {
 
         Set<Order> all = orderService.findAll();
 
-        return all.stream().map(order -> new OrderDTO(order)).collect(Collectors.toSet());
+        return all.stream().map(OrderDTO::new).collect(Collectors.toSet());
     }
 }

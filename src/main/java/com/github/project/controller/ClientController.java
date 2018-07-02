@@ -27,7 +27,7 @@ public class ClientController {
     @GetMapping
     public Set<ClientDTO> findAll() {
         Set<Client> all = clientService.findAll();
-        return all.stream().map(client -> new ClientDTO(client)).collect(Collectors.toSet());
+        return all.stream().map(ClientDTO::new).collect(Collectors.toSet());
     }
 
     @PostMapping

@@ -27,7 +27,7 @@ public class RoomController {
     @GetMapping
     public Set<RoomDTO> findAll() {
         Set<Room> all = roomService.findAll();
-        return all.stream().map(room -> new RoomDTO(room)).collect(Collectors.toSet());
+        return all.stream().map(RoomDTO::new).collect(Collectors.toSet());
     }
 
     @PostMapping

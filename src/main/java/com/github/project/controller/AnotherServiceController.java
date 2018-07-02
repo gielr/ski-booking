@@ -1,6 +1,5 @@
 package com.github.project.controller;
 
-
 import com.github.project.dto.AnotherServiceDTO;
 import com.github.project.model.AnotherService;
 import com.github.project.service.AnotherServiceService;
@@ -44,8 +43,6 @@ public class AnotherServiceController {
 
         Set<AnotherService> all = anotherServiceService.findAll();
 
-        return all.stream().map(anotherService -> new AnotherServiceDTO(anotherService)).collect(Collectors.toSet());
+        return all.stream().map(AnotherServiceDTO::new).collect(Collectors.toSet());
     }
-
-
 }

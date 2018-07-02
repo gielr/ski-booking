@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 public class RoomDTO {
     private Integer roomSize;
     private BigDecimal price;
-    private Long id;
+
 
     public RoomDTO() {
     }
@@ -15,7 +15,6 @@ public class RoomDTO {
     public RoomDTO(Room room) {
         this.roomSize = room.getRoomSize();
         this.price = room.getPrice();
-        this.id = room.getId();
     }
 
     public Integer getRoomSize() {
@@ -32,13 +31,5 @@ public class RoomDTO {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }
