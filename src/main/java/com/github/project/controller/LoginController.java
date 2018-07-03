@@ -11,6 +11,7 @@ public class LoginController {
     @GetMapping("/login")
     public String login(Model model) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
+//        ClientUserDetails principal = (ClientUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("username", username);
         return "login";
     }
