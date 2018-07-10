@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 import static com.github.project.model.RoleEnum.NOT_VERIFIED;
+import static com.github.project.model.RoleEnum.VERIFIED;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -49,6 +50,7 @@ public class ClientServiceImpl implements ClientService {
         client.setPassword(clientDTO.getPassword());
         client.setEmail(clientDTO.getEmail());
         client.setConfirmationToken(UUID.randomUUID().toString());
+        client.setEnabled(true);
 
         Role notVerified = roleRepository.findOneByName(NOT_VERIFIED.getName());
         client.setRole(notVerified);
@@ -76,7 +78,12 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client activateUser(String token) {
         Client client = clientRepository.findByConfirmationToken(token);
-        client.setEnabled(true);
+//        client.setEnabled(true);
+//        Role role = new Role("VERIFIED");
+//        client.setRole("");
+        Role verified = roleRepository.findOneByName(VERIFIED.getName());
+        client.setRole(verified);
+
         return clientRepository.save(client);
     }
 

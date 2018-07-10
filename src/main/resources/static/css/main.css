@@ -85,12 +85,12 @@ div.col-md-8{
 
 .header {
     background: #505050;
-    height: 120px;
+    height: 128px;
 }
 
 .footer {
     background: #505050;
-    height: 120px;
+    height: 128px;
 }
 
 .logoutButton {
@@ -108,8 +108,8 @@ div.col-md-8{
 }
 
 .logo{
-    height: 120px;
-    width: 180px;
+    height: 128px;
+    width: 128px;
     /*border-radius: 10px;*/
     margin: auto;
 }
