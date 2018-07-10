@@ -12,10 +12,7 @@ import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static com.github.project.model.RoleEnum.NOT_VERIFIED;
 
@@ -51,6 +48,7 @@ public class ClientServiceImpl implements ClientService {
         client.setSurname(clientDTO.getSurname());
         client.setPassword(clientDTO.getPassword());
         client.setEmail(clientDTO.getEmail());
+        client.setConfirmationToken(UUID.randomUUID().toString());
 
         Role notVerified = roleRepository.findOneByName(NOT_VERIFIED.getName());
         client.setRole(notVerified);
@@ -73,6 +71,13 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client findByConfirmationToken(String confirmationToken) {
         return clientRepository.findByConfirmationToken(confirmationToken);
+    }
+
+    @Override
+    public Client activateUser(String token) {
+        Client client = clientRepository.findByConfirmationToken(token);
+        client.setEnabled(true);
+        return clientRepository.save(client);
     }
 
     private void validateCreation(ClientDTO clientDTO) {
