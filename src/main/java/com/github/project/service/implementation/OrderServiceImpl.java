@@ -9,6 +9,7 @@ import com.github.project.repository.OrderRepository;
 import com.github.project.repository.RoomRepository;
 import com.github.project.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -43,6 +44,15 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order createOrder(OrderDTO orders) {
+        String bookingTime = " 13:00";
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Long id = clientRepository.findByEmail(username).getId();
+        orders.setClientId(id);
+
+        String timeFrom = orders.getBookFrom() + bookingTime;
+        String timeTo = orders.getBookTo() + bookingTime;
+        orders.setBookFrom(timeFrom);
+        orders.setBookTo(timeTo);
 
         validateCreation(orders.getBookFrom(), orders.getBookTo(),orders.getClientId(),orders.getRoomId());
 
