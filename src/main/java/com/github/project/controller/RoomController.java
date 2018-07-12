@@ -34,6 +34,13 @@ public class RoomController {
         return "room";
     }
 
+    @PostMapping("/all")
+    public String findAllWithDate(Model model) {
+        Set<Room> all = roomService.findAll();
+        model.addAttribute("rooms", all.stream().map(RoomDTO::new).collect(Collectors.toSet()));
+        return "room";
+    }
+
     @PostMapping
     @ResponseBody
     public RoomDTO createRoom(@RequestBody RoomDTO roomDTO) {

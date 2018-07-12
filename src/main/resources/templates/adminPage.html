@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/css/main.css"/>
+<head>
+    <title th:text="'Strona Admina'"></title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<head>
+    <div th:replace="fragments/header :: header">Header</div>
+</head>
+<div class="container-fluid">
+    <div class="row main">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <tr th:each="client: ${clients}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div style="text-align: center; border: solid" class="col-md-8">
+                            <p>
+                                Klient email:
+                            <td th:text="${client.email}"/>
+                            </p>
+                            <p>
+                                Imie klienta:
+                            <td th:text="${client.name}"/>
+                            </p>
+                            <p>
+                                Nazwisko klienta:
+                            <td th:text="${client.surname}"/>
+                            </p>
+
+                            <form name="f" th:action="@{/adminPage/clientOrders}" method="post">
+                                <input type="hidden" name="email" th:value="${client.email}"/>
+                                <input type="submit" class="btn btn-lg btn-primary btn-block"
+                                       value="Sprawdz zamowienia"/>
+                            </form>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
+            </tr>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<footer>
+    <div th:replace="fragments/footer :: footer"></div>
+</footer>
+</body>
+</html>

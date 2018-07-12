@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" href="/css/main.css"/>
 <head>
-    <title th:text="'Strona glowna'"></title>
+    <title th:text="'Strona Admina'"></title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
@@ -15,7 +15,17 @@
     <div class="row main">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            Witamy na platformie Ski-Booking
+            Dupa
+            <div th:if="${clientOrders.isEmpty()}">
+                Klient nie ma zadnych zamowien.
+            </div>
+            <div th:else="${!clientOrders.isEmpty()}">
+                <tr th:each="order: ${clientOrders}">
+                    <p>
+                    <td th:text="${order.room.price}"/>
+                    </p>
+                </tr>
+            </div>
         </div>
         <div class="col-md-2"></div>
     </div>

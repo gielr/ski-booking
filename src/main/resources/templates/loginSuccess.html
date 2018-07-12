@@ -2,31 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" href="/css/main.css"/>
 <head>
-    <title>Logged in</title>
+    <title th:text="'Logowanie pomyslne'"></title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <head>
     <div th:replace="fragments/header :: header">Header</div>
 </head>
-<div th:switch="${auth}">
-    <p th:case="false">
-        <script>
-            alert("AKTYWUJ MAILA!");
-        </script>
-    </p>
-    <p th:case="true">
-        <script>
-            alert("mail activated");
-        </script>
-    </p>
-</div>
+
 <div class="container-fluid">
-    <div class="row">
+    <div class="row main">
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="col-md-12 window">

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" href="/css/main.css"/>
 <head>
-    <title th:text="'Logowanie'"></title>
+    <title th:text="'Wyszukiwanie pokoi'"></title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
@@ -15,29 +15,29 @@
     <div class="row main">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <form th:action="@{/login}" method="post">
+            <h1 style="vertical-align: middle">Wybierz termin rezerwacji</h1>
+            <form th:action="@{/room/all}" method="post">
                 <fieldset>
-                    <h1 style="vertical-align: middle">Zaloguj sie</h1>
                     <div th:if="${error}">
                         <div class="alert alert-danger">
-                            Invalid username or password.
+                            Invalid date.
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="email" id="email" class="form-control input-lg"
-                               placeholder="E-mail" required="true" autofocus="true"/>
+                        <input type="date" name="Date from" id="dateFrom" class="form-control input-lg"
+                               placeholder="dateFrom" required="true" autofocus="true"/>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" id="password" class="form-control input-lg"
-                               placeholder="Password" required="true"/>
+                        <input type="date" name="Date to" id="dateTo" class="form-control input-lg"
+                               placeholder="dateTo" required="true" autofocus="true"/>
                     </div>
                     <div class="row">
-                        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In"/>
+                        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Potwierdz termin"/>
                     </div>
                 </fieldset>
             </form>
         </div>
-
+        <div class="col-md-2"></div>
     </div>
 </div>
 <footer>
