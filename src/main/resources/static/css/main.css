@@ -2,18 +2,6 @@ fieldset{
     width: 200px;
 }
 
-
-form.head{
-    display: inline-block;
-    margin: 35px 5px 10px 5px;
-}
-
-/*form.mid{*/
-    /*!*align: center;*!*/
-    /*!*align-items: center;*!*/
-    /*vertical-align: center;*/
-/*}*/
-
 fieldset{
     margin: auto;
     align: center;
@@ -21,15 +9,13 @@ fieldset{
     vertical-align: center;
 }
 
+/*Body*/
 body {
-    background: lightblue;
-    width: 1200px;
-    align: center;
-    margin: auto;
-}
-
-h1 {
-    text-align: center;
+    background-image: url(../img/Snow.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .text {
@@ -43,53 +29,72 @@ h1 {
     margin-bottom: 15px;
     margin-left: auto;
     margin-right: auto;
-    /*max-width: auto;*/
 }
 
 .col-md-8.form-group{
     align: center;
-
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
 
 div.col-md-8{
-    /*width: 800px;*/
     border: solid 1px gray;
     border-radius: 20px;
     background: white;
     margin: 15px 0 15px 0px;
     vertical-align: middle;
-    /*margin-left: 200px;*/
-    /*margin-right: 200px;*/
 }
 
-.window {
-    /*text-align: center;*/
-    /*margin: 15px 0px 15px 0px;*/
-    /*width: max-content;*/
-    /*!*width: auto;*!*/
-    /*border: solid 1px gray;*/
-    /*border-radius: 20px;*/
-    /*background: white;*/
-    /*padding: 15px 0px 0px 0px;*/
+h1 {
+    text-align: center;
 }
 
-.form-group {
-    /*max-width: 600px;*/
+/*Header*/
+.head{
+    /*display: inline-block;*/
     /*margin-left: auto;*/
     /*margin-right: auto;*/
-    /*vertical-align: middle;*/
 }
 
 .header {
-    background: #505050;
+    background: white;
     height: 128px;
 }
 
+.logo{
+    height: auto;
+    width: auto;
+    margin: auto;
+}
+
+ul {
+    list-style: none;
+}
+
+.menu-wrapper{
+    height: 100%;
+}
+
+.menu-desktop {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+}
+
+.children{
+    padding-right: 25px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.main{
+    min-height: 605px;
+}
+
+/*Footer*/
 .footer {
-    background: #505050;
+    background: white;
     height: 128px;
 }
 
@@ -107,9 +112,5 @@ div.col-md-8{
     border: 2px solid #f44336;
 }
 
-.logo{
-    height: 128px;
-    width: 128px;
-    /*border-radius: 10px;*/
-    margin: auto;
-}
+
+

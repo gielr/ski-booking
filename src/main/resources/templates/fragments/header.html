@@ -4,37 +4,28 @@
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div th:fragment="header">
     <div class="container-fluid">
         <div class="row header">
             <div class="col-md-3">
-                <img class="logo" th:src="@{/img/Ski-booking-logo.png}"/>
+                <a th:href="@{/home}">
+                    <img class="logo" th:src="@{/img/Ski-booking-logo.png}"/>
+                </a>
             </div>
-            <div class="col-md-9">
-                <form class="head" th:action="@{/home}" method="get">
-                    <fieldset>
-                        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Home"/>
-                    </fieldset>
-                </form>
-                <form class="head" th:action="@{/bookingTime}" method="get">
-                    <fieldset>
-                        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Rent room"/>
-                    </fieldset>
-                </form>
-                <form class="head" th:action="@{/login}" method="get">
-                    <fieldset>
-                        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Login"/>
-                    </fieldset>
-                </form>
-                <form class="head" th:action="@{/registration}" method="get">
-                    <fieldset>
-                        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Register"/>
-                    </fieldset>
-                </form>
+            <div class="col-md-9 menu-wrapper">
+                <ul class="menu-desktop">
+                    <li class="children">
+                        <a th:href="@{/bookingTime}">Zarezerwój pokój</a>
+                    </li>
+                    <li class="children">
+                        <a th:href="@{/login}">Logowanie</a>
+                    </li>
+                    <li class="children">
+                        <a th:href="@{/registration}">Rejestracja</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

@@ -37,7 +37,6 @@ public class AnotherServiceController {
         anotherServiceService.deleteAnotherService(id);
     }
 
-
     @GetMapping
     public Set<AnotherServiceDTO> findAll() {
         Set<AnotherService> all = anotherServiceService.findAll();

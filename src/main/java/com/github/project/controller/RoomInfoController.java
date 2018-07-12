@@ -24,9 +24,11 @@ public class RoomInfoController {
     public String findOneById(@PathVariable Long id, Model model) {
         RoomDTO roomDTO = new RoomDTO(roomService.findById(id));
         model.addAttribute("room", roomDTO);
+
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setRoomId(id);
         model.addAttribute("orderDTO", orderDTO);
+
         return "roomInfo";
     }
 }

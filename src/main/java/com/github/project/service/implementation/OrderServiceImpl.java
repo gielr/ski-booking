@@ -33,6 +33,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public Set<Order> findAllByClientId(Long clientId){
+        return new HashSet<>(orderRepository.findAllByClientId(clientId));
+    }
+
+    @Override
     public Order findById(Long id) {
         return orderRepository.findOne(id);
     }

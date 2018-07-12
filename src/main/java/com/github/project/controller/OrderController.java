@@ -37,9 +37,7 @@ public class OrderController {
 
     @GetMapping
     public Set<OrderDTO> findAll() {
-
         Set<Order> all = orderService.findAll();
-
         return all.stream().map(OrderDTO::new).collect(Collectors.toSet());
     }
 }

@@ -12,7 +12,7 @@
     <div th:replace="fragments/header :: header">Header</div>
 </head>
 <div class="container-fluid">
-    <div class="row">
+    <div class="row main">
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="text">
@@ -27,10 +27,12 @@
                         <input type="hidden" th:field="*{roomId}" th:value="${room.roomId}"/>
                             <input type="date" name="Date from" id="dateFrom" class="form-control input-lg"
                                    placeholder="Date from" required="true" autofocus="true"
-                                   th:field="*{bookFrom}"/>
+                                   th:field="*{bookFrom}"/><br>
+
                             <input type="date" name="Date to" id="dateTo" class="form-control input-lg"
                                    placeholder="Date to" required="true" autofocus="true"
-                                   th:field="*{bookTo}"/>
+                                   th:field="*{bookTo}"/><br>
+
                         <input type="submit" class="btn btn-lg btn-primary btn-block" value="Potwierdz termin"/>
                     </fieldset>
                 </form>
