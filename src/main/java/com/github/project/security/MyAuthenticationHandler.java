@@ -21,7 +21,7 @@ import java.util.Collection;
 public class MyAuthenticationHandler implements AuthenticationSuccessHandler {
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-    protected Log logger = LogFactory.getLog(this.getClass());
+    private Log logger = LogFactory.getLog(this.getClass());
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
@@ -32,8 +32,8 @@ public class MyAuthenticationHandler implements AuthenticationSuccessHandler {
     }
 
 
-    protected void handle(HttpServletRequest request,
-                          HttpServletResponse response, Authentication authentication)
+    private void handle(HttpServletRequest request,
+                        HttpServletResponse response, Authentication authentication)
             throws IOException {
         String targetUrl = determineTargetUrl(authentication, request);
 
@@ -46,7 +46,7 @@ public class MyAuthenticationHandler implements AuthenticationSuccessHandler {
         redirectStrategy.sendRedirect(request, response, targetUrl);
     }
 
-    protected String determineTargetUrl(Authentication authentication, HttpServletRequest request) {
+    private String determineTargetUrl(Authentication authentication, HttpServletRequest request) {
         boolean isVerified = false;
         boolean isAdmin = false;
         Collection<? extends GrantedAuthority> authorities
@@ -61,16 +61,16 @@ public class MyAuthenticationHandler implements AuthenticationSuccessHandler {
             }
         }
 
-        if (!isVerified) {
+        if (!isVerified && !isAdmin) {
             return "/emailReminder";
         } else if (isAdmin) {
-            return "/loginSuccess";
+            return "/adminPage";
         } else {
             return "/loginSuccess";
         }
     }
 
-    protected void clearAuthenticationAttributes(HttpServletRequest request) {
+    private void clearAuthenticationAttributes(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session == null) {
             return;

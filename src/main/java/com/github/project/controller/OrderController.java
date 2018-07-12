@@ -26,10 +26,9 @@ public class OrderController {
     }
 
     @PostMapping
-    public OrderDTO createOrder(@RequestBody OrderDTO orderDTO) {
+    public OrderDTO createOrder(@ModelAttribute(value = "orderDTO") OrderDTO orderDTO) {
         return new OrderDTO(orderService.createOrder(orderDTO));
     }
-
 
     @DeleteMapping("/{id}")
     public void deleteOrder(@PathVariable Long id) {
@@ -38,9 +37,7 @@ public class OrderController {
 
     @GetMapping
     public Set<OrderDTO> findAll() {
-
         Set<Order> all = orderService.findAll();
-
         return all.stream().map(OrderDTO::new).collect(Collectors.toSet());
     }
 }

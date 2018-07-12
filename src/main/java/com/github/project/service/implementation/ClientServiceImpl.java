@@ -10,6 +10,7 @@ import com.github.project.repository.RoleRepository;
 import com.github.project.service.ClientService;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -21,11 +22,13 @@ import static com.github.project.model.RoleEnum.VERIFIED;
 public class ClientServiceImpl implements ClientService {
     private ClientRepository clientRepository;
     private RoleRepository roleRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public ClientServiceImpl(ClientRepository clientRepository, RoleRepository roleRepository) {
+    public ClientServiceImpl(ClientRepository clientRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.clientRepository = clientRepository;
         this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -47,7 +50,7 @@ public class ClientServiceImpl implements ClientService {
         Client client = new Client();
         client.setName(clientDTO.getName());
         client.setSurname(clientDTO.getSurname());
-        client.setPassword(clientDTO.getPassword());
+        client.setPassword(passwordEncoder.encode(clientDTO.getPassword()));
         client.setEmail(clientDTO.getEmail());
         client.setConfirmationToken(UUID.randomUUID().toString());
         client.setEnabled(true);
@@ -78,9 +81,6 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client activateUser(String token) {
         Client client = clientRepository.findByConfirmationToken(token);
-//        client.setEnabled(true);
-//        Role role = new Role("VERIFIED");
-//        client.setRole("");
         Role verified = roleRepository.findOneByName(VERIFIED.getName());
         client.setRole(verified);
 
