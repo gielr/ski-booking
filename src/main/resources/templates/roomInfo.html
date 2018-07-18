@@ -17,8 +17,8 @@
         <div class="col-md-8">
             <div class="text">
                 <p>
-                <td th:text="'Wybrany pokoj jest dostepny w wybranym przez Ciebie terminie.'"/><br/>
-                <td th:text="'Aktualna cena pokoju wynosi:' + ${room.price}"/><br/>
+                <td th:text="'Wybrany pokoj jest dostepny w wybranym przez Ciebie terminie.'"/>
+                <td th:text="'Aktualna cena pokoju wynosi:' + ${room.price}"/>
                 <td th:text="' Pokoj przeznaczony jest dla: ' + ${room.roomSize} + 'osob'"/>
                 </p>
                 <p>Zarezerwuj pokoj</p>
@@ -32,7 +32,6 @@
                             <input type="date" name="Date to" id="dateTo" class="form-control input-lg"
                                    placeholder="Date to" required="true" autofocus="true"
                                    th:field="*{bookTo}"/>
-
                         <input type="submit" class="btn btn-lg btn-primary btn-block" value="Potwierdz termin"/>
                     </fieldset>
                 </form>

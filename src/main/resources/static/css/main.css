@@ -32,19 +32,14 @@ ul {
 }
 
 .menu-wrapper{
-    /*height: 100%;*/
 }
 
 .menu-desktop {
-    /*width: 100%;*/
-    /*height: auto;*/
     display: inline-flex;
 }
 
 .children{
     padding-right: 25px;
-    /*margin-top: auto;*/
-    /*margin-bottom: auto;*/
 }
 
 /*Footer*/
@@ -78,7 +73,7 @@ body {
 
 .main{
     margin-top: 128px;
-    min-height: 1000px;
+    min-height: 1280px;
 }
 
 .text {
